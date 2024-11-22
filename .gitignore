@@ -5,3 +5,6 @@ bin/Antlr3.Runtime.dll
 /obj
 /packages
 /.vs
+/bin
+/packages
+/obj
