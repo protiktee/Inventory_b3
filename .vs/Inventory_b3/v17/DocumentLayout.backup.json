@@ -7,23 +7,23 @@
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|e:\\ostad\\training\\b3\\inventory_b3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|E:\\OSTAD\\Training\\b3\\Inventory_b3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|e:\\ostad\\training\\b3\\inventory_b3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|E:\\OSTAD\\Training\\b3\\Inventory_b3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|e:\\ostad\\training\\b3\\inventory_b3\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|E:\\OSTAD\\Training\\b3\\Inventory_b3\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|e:\\ostad\\training\\b3\\inventory_b3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|E:\\OSTAD\\Training\\b3\\Inventory_b3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|e:\\ostad\\training\\b3\\inventory_b3\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|E:\\OSTAD\\Training\\b3\\Inventory_b3\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AAA9C3C-8D1F-439E-875E-7515AADC3EC2}|Inventory_b3.csproj|solutionrelative:app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -54,12 +54,11 @@
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\OSTAD\\Training\\b3\\Inventory_b3\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\OSTAD\\Training\\b3\\Inventory_b3\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml*",
+              "ToolTip": "E:\\OSTAD\\Training\\b3\\Inventory_b3\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-13T17:01:28.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T17:01:28.764Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "Views\\Auth\\Login.cshtml",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAABsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-13T15:58:51.396Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T15:58:51.396Z"
             },
             {
               "$type": "Document",
@@ -84,8 +82,7 @@
               "RelativeToolTip": "App_Start\\RouteConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T15:58:09.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T15:58:09.64Z"
             },
             {
               "$type": "Document",
@@ -97,8 +94,7 @@
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T15:58:02.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T15:58:02.14Z"
             },
             {
               "$type": "Document",
@@ -123,8 +119,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-13T15:56:52.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T15:56:52.992Z"
             }
           ]
         }

@@ -8,3 +8,4 @@ bin/Antlr3.Runtime.dll
 /bin
 /packages
 /obj
+/.vs
