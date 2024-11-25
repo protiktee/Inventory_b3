@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory_b3.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,10 +16,13 @@ namespace Inventory_b3.Controllers
         }
         [HttpPost]
         public ActionResult Login(string username, string password)
-        { 
-            if (username == "admin" && password == "123")
+        {
+            Member objMember = new Member();
+            objMember.ValidateMember(username, password);
+            if (objMember.Name!="")//(username == "admin" && password == "123")
             { 
                 Session["username"] = username;
+                Session["AuthMemberInfo"] = objMember;
                 ViewBag.Msg = "Login Success";
             }
             else

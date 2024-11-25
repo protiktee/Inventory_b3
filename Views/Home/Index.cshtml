@@ -1,7 +1,48 @@
-﻿@{
+﻿@using Inventory_b3.Models  
+@{
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    table th {
+        border:1px solid #292929;
+        background:#00ff21;
+    }
+    table td {
+        border: 1px solid #292929;
+    }
+</style>
 <main>
-    Dashboard
+    @{ 
+        Member objModel = (Member)Session["AuthMemberInfo"];
+    }
+    Dashboard - @objModel.Name
+
+
+
+    <table>
+        <tr>
+            <th>EquipmentId</th>
+            <th>EquipmentName</th>
+            <th>Quantity</th>
+            <th>Stock</th>
+            <th>EntryDate</th>
+        </tr>
+        @{
+            //List<Equipment.BaseEquipment> equipments = (List<Equipment.BaseEquipment>)ViewBag.equipment;
+            EquipmentN baseEquipment = new EquipmentN();
+            List<EquipmentN> equipment = baseEquipment.ListEquipment();
+            foreach (EquipmentN obj in equipment)
+            {
+                <tr>
+                    <td>@obj.EquipmentId</td>
+                    <td>@obj.EquipmentName</td>
+                    <td>@obj.Quantity</td>
+                    <td>@obj.Stock</td>
+                    <td>@obj.EntryDate</td>
+                </tr>
+            }
+
+        }
+    </table>
 </main>
