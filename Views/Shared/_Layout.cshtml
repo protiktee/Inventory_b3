@@ -7,13 +7,28 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/JqueryUI/jquery-ui.min.js"></script>
+    <link href="~/Scripts/JqueryUI/jquery-ui.min.css" rel="stylesheet" />
+
+    @*<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">  
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>*@
     @{
         string CurrentUser = "";
+        string OpMsg = "";
         if (Session["username"] != null)
         {
             if (Session["username"].ToString() != "")
             {
                 CurrentUser = Session["username"].ToString();
+            }
+        }
+        if (Session["OpMsg"] != null)
+        {
+            if (Session["OpMsg"].ToString() != "")
+            {
+                OpMsg = Session["OpMsg"].ToString();
+                Session.Remove("OpMsg");
             }
         }
     }
@@ -25,7 +40,32 @@
                 window.location.href = '@Url.Action("Login","Auth")';
             }
         })
+
+        var OpMsg = '@OpMsg';
+        $(document).ready(function () {
+            if (OpMsg != "") {
+                $('#alertMsg').html(OpMsg);
+                $("#dialog-message").dialog({
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+                OpMsg = "";
+            }
+            $(".clsDatePicker").datepicker({
+                format:'yy-mm-dd'
+            });
+        })
+       
+       
     </script>
+    <style>
+        #ui-datepicker-div {
+            z-index:1000 !important;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -48,7 +88,7 @@
                                 <form action="@Url.Action("Logout","Auth")" method="post">
                                     <input type="submit" class="nav-link" value="Logout" />
                                 </form>
-                            } 
+                            }
                         }
                     </li>
                 </ul>
@@ -62,8 +102,10 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    <div id="dialog-message" title="Alert">
+         <p id="alertMsg"></p>
+    </div>
 
-   
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

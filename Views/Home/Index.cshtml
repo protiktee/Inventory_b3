@@ -1,48 +1,73 @@
-﻿@using Inventory_b3.Models  
+﻿@using Inventory_b3.Models
 @{
     ViewBag.Title = "Home Page";
 }
-
-<style>
-    table th {
-        border:1px solid #292929;
-        background:#00ff21;
+<script>
+    function ShowEquipmentEntryDialog()
+    {
+        $('#dvModalEquipment').dialog({ 
+            height: 400,
+            width: 350,
+            modal: true,
+            buttons: { 
+                Ok: function () {
+                    //dialog.dialog("close");
+                },
+                Cancel: function () {
+                    dialog.dialog("close");
+                }
+            } 
+        });
     }
+</script>
+<style>
+    .ui-widget-overlay {
+        background: #000 !important;
+        opacity: .7;
+    }
+    table th {
+        border: 1px solid #292929;
+        background: #00ff21;
+    }
+
     table td {
         border: 1px solid #292929;
     }
 </style>
 <main>
-    @{ 
+    @{
         Member objModel = (Member)Session["AuthMemberInfo"];
     }
-    Dashboard - @objModel.Name
+    <a onclick="ShowEquipmentEntryDialog()">New Equipment</a>
+    <div style="height:550px;width:700px;overflow:auto">
+        <table>
+            <tr>
+                <th>EquipmentId</th>
+                <th>EquipmentName</th>
+                <th>Quantity</th>
+                <th>Stock</th>
+                <th>EntryDate</th>
+                <th>ReceiveDate</th>
+            </tr>
+            @{
+                //List<Equipment.BaseEquipment> equipments = (List<Equipment.BaseEquipment>)ViewBag.equipment;
+                EquipmentN baseEquipment = new EquipmentN();
+                List<EquipmentN> equipment = baseEquipment.ListEquipment();
+                foreach (EquipmentN obj in equipment)
+                {
+                    <tr>
+                        <td>@obj.EquipmentId</td>
+                        <td>@obj.EquipmentName</td>
+                        <td>@obj.Quantity</td>
+                        <td>@obj.Stock</td>
+                        <td>@obj.EntryDate</td>
+                        <td>@obj.ReceiveDate</td>
+                    </tr>
+                }
 
-
-
-    <table>
-        <tr>
-            <th>EquipmentId</th>
-            <th>EquipmentName</th>
-            <th>Quantity</th>
-            <th>Stock</th>
-            <th>EntryDate</th>
-        </tr>
-        @{
-            //List<Equipment.BaseEquipment> equipments = (List<Equipment.BaseEquipment>)ViewBag.equipment;
-            EquipmentN baseEquipment = new EquipmentN();
-            List<EquipmentN> equipment = baseEquipment.ListEquipment();
-            foreach (EquipmentN obj in equipment)
-            {
-                <tr>
-                    <td>@obj.EquipmentId</td>
-                    <td>@obj.EquipmentName</td>
-                    <td>@obj.Quantity</td>
-                    <td>@obj.Stock</td>
-                    <td>@obj.EntryDate</td>
-                </tr>
             }
-
-        }
-    </table>
+        </table>
+    </div>
+    
 </main>
+@Html.Partial("~/Views/Common/_PartialEquipmentEntry.cshtml") 

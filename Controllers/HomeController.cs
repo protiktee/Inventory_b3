@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Equipment;
 
 namespace Inventory_b3.Controllers
 {
@@ -17,7 +16,20 @@ namespace Inventory_b3.Controllers
             //ViewBag.equipment = equipment;
             return View();
         }
+        public ActionResult SaveEquipment(FormCollection frmCollection)
+        {
+            EquipmentN equipmentN = new EquipmentN();
+            equipmentN.EquipmentName = frmCollection["txtEquipName"].ToString();
+            equipmentN.Quantity = Convert.ToInt32(frmCollection["txtEquipQuantity"].ToString());
+            equipmentN.ReceiveDate = DateTime.ParseExact(frmCollection["txtReceiveDate"].ToString(), "dd/MM/yyyy", null); 
+            int returnResult= equipmentN.SaveEquipment();
 
+            Session["OpMsg"] = "Failed";
+            if (returnResult == 1)
+                Session["OpMsg"] = "Saved Succesfully";
+
+            return RedirectToAction("Index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

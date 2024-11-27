@@ -1,0 +1,33 @@
+﻿<div id="dvModalEquipment" style="display:none;height: 500px; width: 400px;">
+    <div class="card">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <form method="post" action="@Url.Action("SaveEquipment","Home")">
+                
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Equipment Name</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtEquipName">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Quantity</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtEquipQuantity">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Receive Date</span>
+                    </div>
+                    <input type="text" class="form-control clsDatePicker" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtReceiveDate">
+                </div>
+                <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+
+            </form>
+            
+        </div>
+    </div>
+</div>

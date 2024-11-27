@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Configuration;
+using System.IO;
 
 namespace Inventory_b3.Models
 {
@@ -16,8 +17,8 @@ namespace Inventory_b3.Models
         public string EquipmentName { get; set; }
         public int Quantity { get; set; }
         public int Stock { get; set; }
-        public DateTime EntryDate { get; set; } 
-
+        public DateTime EntryDate { get; set; }
+        public DateTime ReceiveDate { get; set; } 
         public List<EquipmentN> ListEquipment()
         {
             List<EquipmentN> equipment = new List<EquipmentN>();  
@@ -47,6 +48,7 @@ namespace Inventory_b3.Models
                         objBaseEquipment.Quantity= Convert.ToInt32(reader["Quantity"].ToString());
                         objBaseEquipment.Stock= Convert.ToInt32(reader["Stock"].ToString());
                         objBaseEquipment.EntryDate = Convert.ToDateTime(reader["EntryDate"].ToString());
+                        objBaseEquipment.ReceiveDate = Convert.ToDateTime(reader["ReceiveDate"]);
                         equipment.Add(objBaseEquipment);
                     }
                 }
@@ -57,7 +59,7 @@ namespace Inventory_b3.Models
             }
             catch (Exception ex)
             {
-
+                throw new Exception();
             }
             finally
             {
@@ -65,6 +67,38 @@ namespace Inventory_b3.Models
                 sqlConnection.Dispose();
             }
             return equipment;
+        }
+
+        public int SaveEquipment()
+        {
+            int ReturnCase = 0;
+            string ConnString = ConfigurationManager.ConnectionStrings["connstring"].ToString();
+            SqlConnection sqlConnection = new SqlConnection(ConnString);
+            sqlConnection.Open();
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = sqlConnection;
+                cmd.CommandText = "spOST_InsEquipment";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@Name", this.EquipmentName));
+                cmd.Parameters.Add(new SqlParameter("@EcCount", this.Quantity)); 
+                cmd.Parameters.Add(new SqlParameter("@ReceiveDate", this.ReceiveDate));
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 0;
+                ReturnCase=cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+                sqlConnection.Dispose();
+            }
+            return ReturnCase;
         }
     }
 }
