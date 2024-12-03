@@ -1,0 +1,33 @@
+﻿<div id="dvModalEquipmentAssignment" style="display:none;height: 500px; width: 400px;">
+    <div class="card">
+        <div class="card-header">
+            Assignment
+        </div>
+        <div class="card-body">
+            <form method="post" action="@Url.Action("SaveAssignment","Home")">
+                
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Customer ID</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtCustomerID">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Equipment ID</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtEquipID">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Quantity</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="txtEquiCount">
+                </div>
+                <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+
+            </form>
+            
+        </div>
+    </div>
+</div>

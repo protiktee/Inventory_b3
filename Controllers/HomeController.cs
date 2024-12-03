@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Cache;
 using System.Web;
 using System.Web.Mvc;
 
@@ -30,6 +31,20 @@ namespace Inventory_b3.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult SaveAssignment(FormCollection frmCollection)
+        {
+            int returnResult = Employee.SaveAssingment(
+                Convert.ToInt32(frmCollection["txtCustomerID"].ToString()), 
+                Convert.ToInt32(frmCollection["txtEquipID"].ToString()), 
+                Convert.ToInt32(frmCollection["txtEquiCount"].ToString())
+                );
+
+            Session["OpMsg"] = "Failed";
+            if (returnResult == 1)
+                Session["OpMsg"] = "Saved Succesfully";
+
+            return RedirectToAction("Index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -42,6 +57,22 @@ namespace Inventory_b3.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+
+        [HttpGet]
+        public JsonResult GetName()//Home/GetName
+        {
+            List<Member> sds = new List<Member>();
+            Member member=new Member();
+            member.Name = "Member 1"; 
+            sds.Add(member);
+
+            member = new Member();
+            member.Name = "Member 2";
+            sds.Add(member);
+
+            return Json(sds, JsonRequestBehavior.AllowGet);
         }
     }
 }

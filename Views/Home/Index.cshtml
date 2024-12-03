@@ -1,22 +1,37 @@
 ﻿@using Inventory_b3.Models
+@using System.Data
 @{
     ViewBag.Title = "Home Page";
 }
 <script>
-    function ShowEquipmentEntryDialog()
-    {
-        $('#dvModalEquipment').dialog({ 
+    function ShowEquipmentEntryDialog() {
+        $('#dvModalEquipment').dialog({
             height: 400,
             width: 350,
             modal: true,
-            buttons: { 
+            buttons: {
                 Ok: function () {
                     //dialog.dialog("close");
                 },
                 Cancel: function () {
                     dialog.dialog("close");
                 }
-            } 
+            }
+        });
+    }
+    function ShowAssignmentEntryDialog() {
+        $('#dvModalEquipmentAssignment').dialog({
+            height: 400,
+            width: 350,
+            modal: true,
+            buttons: {
+                Ok: function () {
+                    //dialog.dialog("close");
+                },
+                Cancel: function () {
+                    dialog.dialog("close");
+                }
+            }
         });
     }
 </script>
@@ -25,6 +40,7 @@
         background: #000 !important;
         opacity: .7;
     }
+
     table th {
         border: 1px solid #292929;
         background: #00ff21;
@@ -38,36 +54,111 @@
     @{
         Member objModel = (Member)Session["AuthMemberInfo"];
     }
-    <a onclick="ShowEquipmentEntryDialog()">New Equipment</a>
-    <div style="height:550px;width:700px;overflow:auto">
-        <table>
-            <tr>
-                <th>EquipmentId</th>
-                <th>EquipmentName</th>
-                <th>Quantity</th>
-                <th>Stock</th>
-                <th>EntryDate</th>
-                <th>ReceiveDate</th>
-            </tr>
-            @{
-                //List<Equipment.BaseEquipment> equipments = (List<Equipment.BaseEquipment>)ViewBag.equipment;
-                EquipmentN baseEquipment = new EquipmentN();
-                List<EquipmentN> equipment = baseEquipment.ListEquipment();
-                foreach (EquipmentN obj in equipment)
-                {
-                    <tr>
-                        <td>@obj.EquipmentId</td>
-                        <td>@obj.EquipmentName</td>
-                        <td>@obj.Quantity</td>
-                        <td>@obj.Stock</td>
-                        <td>@obj.EntryDate</td>
-                        <td>@obj.ReceiveDate</td>
-                    </tr>
-                }
 
-            }
-        </table>
+    <div class="row">
+        <div class="col col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Equipment List
+                </div>
+                <div class="card-body">
+                    <a onclick="ShowEquipmentEntryDialog()">New Equipment</a>
+                    <div style="height:450px;width:95%;overflow:auto">
+                        <table>
+                            <tr>
+                                <th>EquipmentId</th>
+                                <th>EquipmentName</th>
+                                <th>Quantity</th>
+                                <th>Stock</th>
+                                <th>EntryDate</th>
+                                <th>ReceiveDate</th>
+                            </tr>
+                            @{
+                                //List<Equipment.BaseEquipment> equipments = (List<Equipment.BaseEquipment>)ViewBag.equipment;
+                                EquipmentN baseEquipment = new EquipmentN();
+                                List<EquipmentN> equipment = baseEquipment.ListEquipment();
+                                foreach (EquipmentN obj in equipment)
+                                {
+                                    <tr>
+                                        <td>@obj.EquipmentId</td>
+                                        <td>@obj.EquipmentName</td>
+                                        <td>@obj.Quantity</td>
+                                        <td>@obj.Stock</td>
+                                        <td>@obj.EntryDate</td>
+                                        <td>@obj.ReceiveDate</td>
+                                    </tr>
+                                }
+
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Equipment Assigned List
+                </div>
+                <div class="card-body">
+                    <a onclick="ShowAssignmentEntryDialog()">New Assignment</a>
+                    @{
+                        System.Data.DataTable dt = Employee.ListEmpAssignHist();
+
+                        var pDataTable = (from p in dt.AsEnumerable()
+                                          select new
+                                          {
+                                              CustomerID = p.Field<Int32>("CustomerID"),//
+                                              CustomerName = p.Field<string>("CustomerName"),
+                                              CustomerMobile = p.Field<string>("CustomerMobile"),
+                                              CustAddress = p.Field<string>("CustAddress"),
+                                              EquiCount = p.Field<Int32>("EquiCount"),
+                                              EquipmentName = p.Field<string>("EquipmentName")
+                                          }).ToList();
+
+
+                        string dataTableContent = MVCViewToolKit.DynamicTableMaker.MakeTableDynamic(dt);
+                    }
+                    @*<div style="height: 450px; width: 95%; overflow: auto">
+                            <table>
+                                @Html.Raw(dataTableContent)
+                            </table>
+
+                        </div>*@
+                    <div style="height: 450px; width: 95%; overflow: auto ">
+                        <table>
+                            <tr>
+                                <th>CustomerID</th>
+                                <th>CustomerName</th>
+                                <th>CustomerMobile</th>
+                                <th>CustAddress</th>
+                                <th>EquiCount</th>
+                                <th>EquipmentName</th>
+                            </tr>
+                            @{
+                                foreach (var objNew in pDataTable)
+                                {
+                                    <tr>
+                                        <td>@objNew.CustomerID</td>
+                                        <td>@objNew.CustomerName</td>
+                                        <td>@objNew.CustomerMobile</td>
+                                        <td>@objNew.CustAddress</td>
+                                        <td>@objNew.EquiCount</td>
+                                        <td>@objNew.EquipmentName</td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    
+
+
+
 </main>
-@Html.Partial("~/Views/Common/_PartialEquipmentEntry.cshtml") 
+@Html.Partial("~/Views/Common/_PartialEquipmentEntry.cshtml")
+@Html.Partial("~/Views/Common/_PartialEquipmentAssign.cshtml") 
